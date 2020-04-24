@@ -1,14 +1,17 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 )
 
+// Args : Contains arguments for running locus
 type Args struct {
-	Language string
-	Code     string
+	Language string `json:"language"`
+	Code     string `json:"code"`
 }
 
 func main() {
@@ -20,11 +23,16 @@ func main() {
 	defer f.Close()
 
 	logger := log.New(f, "LOCUS_RUNNER:", log.LstdFlags)
-	a := &Args{
-		Language: os.Args[1],
-		Code:     os.Args[2],
+	input := os.Args[1]
+	var args Args
+	err = json.Unmarshal([]byte(input), &args)
+	if err != nil {
+		logger.Printf("main: Error in unmarshalling input. Reason:%v", err)
 	}
-	a.convertCode(logger)
+	logger.Printf("Args: %v", args)
+	args.convertCode(logger)
+	fmt.Println("Code converted")
+	fmt.Println(args.execute(logger))
 }
 
 // ConvertCode : Converts code string to File
@@ -39,5 +47,47 @@ func (s Args) convertCode(logger *log.Logger) {
 	if err != nil {
 		logger.Fatalf("convertCode: Error in writing string to file. Reason:%v", err)
 	}
-	fmt.Println("Line : ", line)
+	logger.Println("Line : ", line)
+}
+
+func (s Args) execute(logger *log.Logger) string {
+	logger.Println("s.Language : ", s.Language)
+	switch s.Language {
+	case "py":
+		op, err := exec.Command("python", "/tmp/code.py").Output()
+		if err != nil {
+			logger.Fatalf("execute: Error in executing code. Reason:%v", err)
+		}
+		return string(op)
+
+	case "go":
+		cmd := exec.Command("cd", "/bin/tmp/")
+		err := cmd.Run()
+		if err != nil {
+			logger.Fatalf("Changing direcotry: %v", err)
+		}
+		_, err = exec.Command("go", "build").Output()
+		if err != nil {
+			logger.Fatalf("Compiler Error:%v", err)
+		}
+		op2, err := exec.Command("./code").Output()
+		if err != nil {
+			logger.Fatalf("Runtime Error:%v", err)
+		}
+		return string(op2)
+
+	case "java":
+		_, err := exec.Command("javac", "/tmp/main.java").Output()
+		if err != nil {
+			logger.Fatalf("Compiler Error:%v", err)
+		}
+		op2, err := exec.Command("java", "/tmp/main").Output()
+		if err != nil {
+			logger.Fatalf("Runtime Error:%v", err)
+		}
+		return string(op2)
+
+	case "c++":
+	case "c":
+	}
 }
