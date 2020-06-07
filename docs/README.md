@@ -1,1 +1,3 @@
-### locus
+### Locus
+
+Beginning of documentation
