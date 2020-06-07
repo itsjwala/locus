@@ -2,24 +2,13 @@
 
 this is cli runner for locus
 
-this is basically go binary which takes code of any language and spits out stderr and stdout 
-
-
+usage
 
 ```sh
-# for golang
-$ locus_runner code.go
+docker build -t runner:dev -f Dockerfile-runner . 
 
-# for java
-$ locus_runner code.java
-
-# for c++
-$ locus_runner code.cpp
+docker run runner:dev '{"Code":"\nfor i in range(100):\n    print(f\"This is number :-{i}\")\n","Language":"python"}'
 ```
 
-output should be writing into stdout and stderr files respectively depending on BASEPATH given(maybe via environment variable?) 
 
-
-note:
-1. will support stdin later
 
