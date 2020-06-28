@@ -1,10 +1,8 @@
 package python
 
-
 import (
 	"fmt"
 )
-
 
 func Run(code string) (string, string , error){
 

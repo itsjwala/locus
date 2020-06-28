@@ -4,7 +4,7 @@ import (
   "fmt"
   "os"
   "encoding/json"
-  "./languages"
+  "github.com/itsjwala/locus/runner/languages"
 )
 
 type capability struct {
@@ -31,12 +31,11 @@ func main(){
   fmt.Println("Runnning")
 
 
-  if ! language.IsSupported(caps.language) {
+  if ! languages.IsSupported(caps.language) {
     panic("Language is not supported")
   }
 
 
-  language.Run(caps.language,caps.code)
-   
+  languages.Run(caps.language,caps.code)
 
 }

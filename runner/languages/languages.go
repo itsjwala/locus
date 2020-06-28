@@ -1,8 +1,8 @@
-package language
+package languages
 
 import (
 
-	"./python"
+	"github.com/itsjwala/locus/runner/languages/python"
 
 	"fmt"
 
