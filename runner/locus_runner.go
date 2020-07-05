@@ -1,41 +1,36 @@
 package main
 
 import (
-  "fmt"
-  "os"
-  "encoding/json"
-  "github.com/itsjwala/locus/runner/languages"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"github.com/itsjwala/locus/runner/languages"
+	"os"
 )
 
 type capability struct {
-  code     string   `json:"code"`
-  language string   `json:"language"`
+	Code     string `json:"code"`
+	Language string `json:"language"`
 }
 
-// type result struct {
-//   Stdout string     `json:"stdout"`
-//   Stderr string     `json:"stderr"`
-//   Error  string     `json:"error"`
-// }
-func main(){
+func main() {
+	caps := &capability{}
+	jsonArg := os.Args[1]
+	if err := json.Unmarshal([]byte(jsonArg), caps); err != nil {
+		errString := fmt.Sprintf("%s : %s", err, jsonArg)
+		fmt.Println(jsonifyResult("", "", errors.New(errString)))
+	}
 
-
-  caps := &capability{}
-
-  if err := json.NewDecoder(os.Stdin).Decode(caps) ; err != nil {
-     fmt.Println(err)
-     panic(err)
-  }
-
-  fmt.Println(caps)
-  fmt.Println("Runnning")
-
-
-  if ! languages.IsSupported(caps.language) {
-    panic("Language is not supported")
-  }
-
-
-  languages.Run(caps.language,caps.code)
-
+	if !languages.IsSupported(caps.Language) {
+		errString := fmt.Sprintf("%s is not supported\n", caps.Language)
+		fmt.Println(jsonifyResult("", "", errors.New(errString)))
+	} else {
+		if codeFilePath, err := createCodeFile(caps.Code); err != nil {
+			errString := fmt.Sprintf("%s", err)
+			fmt.Println(jsonifyResult("", "", errors.New(errString)))
+		} else {
+			stdout, stderr, error := languages.Run(caps.Language, codeFilePath)
+			fmt.Println(jsonifyResult(stdout, stderr, error))
+		}
+	}
 }
