@@ -7,4 +7,5 @@ run:
 
 clear: 
 	docker image prune --filter "label=stage=locus_web-builder" --force 
+	docker image prune --filter "label=stage=locus_runner-builder" --force 
 	docker rmi --force `docker images --filter=reference="itsjwala/*" -q | uniq` > /dev/null 2>&1  ||  :

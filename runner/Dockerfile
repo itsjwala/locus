@@ -1,5 +1,7 @@
 FROM golang:1.14-alpine
 
+LABEL stage=locus_runner-builder
+
 ENV GOOS=linux
 
 WORKDIR /src
