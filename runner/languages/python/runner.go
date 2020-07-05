@@ -1,12 +1,19 @@
 package python
 
 import (
-	"fmt"
+	"os/exec"
+	"path/filepath"
+	"bytes"
 )
 
-func Run(code string) (string, string , error){
-
-	fmt.Println("Running python code")
-	fmt.Println(code)
-	return "","", nil
+func Run(codeFilePath string) (string, string , error){
+	cmd := exec.Command("python")
+	var stdout  bytes.Buffer	
+	var stderr  bytes.Buffer	
+	cmd.Stdout = &stdout
+	cmd.Stderr = &stderr
+	cmd.Dir = filepath.Dir(codeFilePath)	
+	cmd.Args = append(cmd.Args,filepath.Base(codeFilePath))
+	err := cmd.Run()
+	return stdout.String(),stderr.String(), err
 }

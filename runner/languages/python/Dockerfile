@@ -2,6 +2,10 @@ FROM itsjwala/locus_runner:latest as locus_runner
 
 FROM python:3-alpine
 
-COPY --from=locus_runner /tmp/locus_runner /tmp
+ENV CODE_DIR=/playground
 
-ENTRYPOINT ["/tmp/locus_runner"]
+WORKDIR /playground
+
+COPY --from=locus_runner /tmp/locus_runner /playground
+
+ENTRYPOINT ["/playground/locus_runner"]
