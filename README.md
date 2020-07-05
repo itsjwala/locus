@@ -1,19 +1,15 @@
-=======
-![Logo of the project](https://i.ytimg.com/vi/j0TUZdBmr6Q/maxresdefault.jpg)
+<div align=center>
+<img style="width:50%" src="./docs/images/logo.png">
+<p> Run any language in docker sandbox</p>
+</div>
 
-# Locus
-> The purpose of Locus is to provide a handy solution to developers to run their code snipplet.
+---
 
-The project is mainly for developer to make their life easy and simple. Also by providing multiple language support.
-Currently, Locus provides support for following languages
-1. Go
-2. Java
-3. Python
-4. C
-5. Python
 
-## Getting started
- [Document Link](https://itsjwala.github.io/locus)
+### Getting started
+
+
+Checkout [Document Link](https://itsjwala.github.io/locus)
 
 ### Instructions
 
@@ -63,4 +59,3 @@ We will soon be releasing some common contribution guidelines [here]().
 
 
 ## Licensing
-
