@@ -25,11 +25,12 @@ func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/execute", execCode).Methods("POST")
 	fmt.Println("done")
-	http.ListenAndServe(":8080", router)
+	http.ListenAndServe(":8090", router)
 }
 
 func execCode(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	var in input
 	b, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -39,22 +40,16 @@ func execCode(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
-
-	fmt.Println(string(b))
-
-	//in.Code = html.EscapeString(in.Code)
-	fmt.Printf("Starting containers,language:%s, code:%s", in.Language, in.Code)
 	ctx := context.Background()
 	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
 	if err != nil {
 		panic(err)
 	}
 
-	//input := `{"language":"python", "code":"print(\"helloworld\")"}`
 	resp, err := cli.ContainerCreate(ctx, &container.Config{
 		Image: fmt.Sprintf("itsjwala/locus_runner-%s", in.Language),
 		Cmd:   []string{string(b)},
-		Tty:true,
+		Tty:   true,
 	}, nil, nil, nil, "")
 	if err != nil {
 		panic(err)
@@ -63,9 +58,7 @@ func execCode(w http.ResponseWriter, r *http.Request) {
 	if err := cli.ContainerStart(ctx, resp.ID, types.ContainerStartOptions{}); err != nil {
 		panic(err)
 	}
-	fmt.Println(resp.ID)
 	options := types.ContainerLogsOptions{ShowStdout: true, ShowStderr: true, Follow: true}
-	// Replace this ID with a container that really exists
 	out, err := cli.ContainerLogs(ctx, resp.ID, options)
 	if err != nil {
 		panic(err)
@@ -73,6 +66,7 @@ func execCode(w http.ResponseWriter, r *http.Request) {
 	buf := new(bytes.Buffer)
 	buf.ReadFrom(out)
 
-	fmt.Println("output : ", buf.String())
 	io.Copy(os.Stdout, out)
+	w.WriteHeader(http.StatusOK)
+	io.WriteString(w, buf.String())
 }
