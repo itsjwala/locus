@@ -21,8 +21,9 @@ func jsonifyResult(stdout string, stderr string, err error) string {
 
 	res.Stdout = stdout
 	res.Stderr = stderr
-	res.Error = fmt.Sprintf("%w", err)
-
+	if err != nil {
+		res.Error = fmt.Sprintf("%v", err)
+	}
 	if jsonBytes, err := json.Marshal(res); err != nil {
 		fmt.Printf("Error occured while marshalling result %s", err)
 		panic(err)
