@@ -25,7 +25,7 @@ func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/execute", execCode).Methods("POST")
 	fmt.Println("done")
-	http.ListenAndServe(":8000", router)
+	http.ListenAndServe(":8080", router)
 }
 
 func execCode(w http.ResponseWriter, r *http.Request) {
@@ -54,6 +54,7 @@ func execCode(w http.ResponseWriter, r *http.Request) {
 	resp, err := cli.ContainerCreate(ctx, &container.Config{
 		Image: fmt.Sprintf("itsjwala/locus_runner-%s", in.Language),
 		Cmd:   []string{string(b)},
+		Tty:true,
 	}, nil, nil, nil, "")
 	if err != nil {
 		panic(err)
@@ -63,7 +64,7 @@ func execCode(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 	fmt.Println(resp.ID)
-	options := types.ContainerLogsOptions{ShowStdout: true, ShowStderr: true}
+	options := types.ContainerLogsOptions{ShowStdout: true, ShowStderr: true, Follow: true}
 	// Replace this ID with a container that really exists
 	out, err := cli.ContainerLogs(ctx, resp.ID, options)
 	if err != nil {
