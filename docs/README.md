@@ -1,31 +1,28 @@
 ### Locus
 
-<div align=center>
-<img style="width:20%" src="images/logo.png">
-<p> Run any language in docker sandbox</p>
-</div>
+<img src="images/banner_logo.png">
 
----
+### Run Languages in Docker containers 
 
-
-### Developing
-
-1. install docker on the machine
-
-2. start locus
-
-```sh
-make run 
-```
-
-1. To Stop the container send SIGTERM `ctrl ^ c`
+The likes of *Hackerrank*, *Hackerearth*, *LeetCode*, *CodeChef* e.t.c uses [unix namespace](https://en.wikipedia.org/wiki/Linux_namespaces) isolation so they can run your submitted code and output it to you without damaging their infra with malicious code. This Project Demonstrates similar attempt of making such namespace isolation using Docker other being [LXC](https://en.wikipedia.org/wiki/Linux_namespaces#Adoption)
 
 
-2. clear the images that were created
+![screenshot]()
 
-```sh
-make clear
-```
 
-### Features
+### Supported Language
+
+1. Python
+2. NodeJS
+
+> Add more Language following this [guide]()
+
+### TechStack
+
+
+![docker]()
+
+![golang]()
+
+![]()
 
