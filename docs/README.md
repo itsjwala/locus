@@ -10,6 +10,8 @@ The likes of *Hackerrank*, *Hackerearth*, *LeetCode*, *CodeChef* e.t.c uses [uni
 ![screenshot]()
 
 
+---
+
 ### Usage
 
 
@@ -35,7 +37,7 @@ make clear
 ```
 
 
-### Supported Language
+### Supported Languages
 
 1. Python
 2. NodeJS
@@ -44,9 +46,21 @@ make clear
 
 ### TechStack
 
+---
 
-<i class="devicon-docker-plain-wordmark"></i>
+<div>
+<img style="display: inline-block" width="7%" src="https://cdn.svgporn.com/logos/html-5.svg">
+<img style="display: inline-block" width="7%" src="https://cdn.svgporn.com/logos/css-3.svg">
+<img style="display: inline-block" width="10%" src="https://cdn.svgporn.com/logos/javascript.svg">
+</div>
+<br>
+<div>
+ <img style="display: inline-block" width="10%" src="https://cdn.svgporn.com/logos/bash.svg">
+<img style="display: inline-block" width="8%" src="https://cdn.svgporn.com/logos/gopher.svg">
+</div>
 
-<i class="devicon-go-line colored"></i>
+<img style="display: inline-block" width="30%" src="https://cdn.svgporn.com/logos/docker.svg">
+
+
 
 
