@@ -3,7 +3,7 @@
 run:
 	cd runner && ./gen_images.sh && cd ..
 	cd web && docker build . -t itsjwala/locus_web && cd ..
-	docker run --rm --name locus_web -v /var/run/docker.sock:/var/run/docker.sock:rw -p 8080:8080 itsjwala/locus_web
+	docker run --rm --name locus_web -v /var/run/docker.sock:/var/run/docker.sock:rw -p 8000:8000 itsjwala/locus_web
 
 clear: 
 	docker image prune --filter "label=stage=locus_web-builder" --force 

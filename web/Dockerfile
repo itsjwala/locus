@@ -9,6 +9,9 @@ RUN go mod download
 
 COPY . .
 
+RUN go get github.com/rakyll/statik \
+    && $GOPATH/bin/statik -src="frontend" 
+
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
 FROM alpine:latest  
@@ -19,6 +22,6 @@ WORKDIR /root/
 
 COPY --from=builder /src/main .
 
-EXPOSE 8080
+EXPOSE 8000
 
 CMD ["./main"] 

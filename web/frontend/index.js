@@ -84,7 +84,7 @@ $(document).ready(function(){
 			"code": $('#code').val().trim()
 		}
 		$('#output').text('Executing..')
-		$.post("http://localhost:8090/execute",JSON.stringify(data),
+		$.post("http://localhost:8000/execute",JSON.stringify(data),
 		function(output,status){
 			console.log(output)
 			if (output.stderr == ''){
