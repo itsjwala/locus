@@ -5,35 +5,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Locus</title>
-	<link rel="stylesheet" type="text/css" href="homepage.less">
+	<link rel="stylesheet" type="text/css" href="./homepage.css">
 </head>
 
 <body>	
 <main class="view">
 	<h1 class="title">
 		Locus
-		<img src="./docs/images/logo.png">  
+		<img src="../docs/images/logo.png">  
 	</h1>
 
 	<div class="window">
 		<div class="window-header">
 			<div class="action-buttons"></div>
-			<select class="language">
-				<option value="javascript" selected>JavaScript</option>
-				<option value="markup">HTML</option>
-				<option value="php">PHP</option>
+			<select id="language" class="language">
+				<option value="python" selected>Python</option>
+				<option value="nodejs">NodeJS</option>
 			</select>
 		</div>
 		<div class="window-body">
-			<textarea class="code-input">// Switch the language and put some code on me :)
-// This is a 'Hello World' example.
-
-function greetings(name){
-    name = name || "stranger";
-    return "Hello, " + name + "!";
-}
-
-window.onLoad = alert(greetings());</textarea>
+			<textarea id="code" class="code-input"> Choose your language and then use this </textarea>
 			<pre class="code-output">
 				<code class="language-javascript">
 					
@@ -42,7 +33,7 @@ window.onLoad = alert(greetings());</textarea>
 		</div>
 	</div>
 	<div>
-		<button onclick=""> Run </button>
+		<button> Run </button>
 	</div>
 	<div class="credits">
 		Thanks to <a href="https://twitter.com/leaverou">Lea Verou</a>
@@ -51,6 +42,6 @@ window.onLoad = alert(greetings());</textarea>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/prism.js"></script>
-<script src="homepage.js"></script>
+<script src="index.js"></script>
 </body>
 </html>

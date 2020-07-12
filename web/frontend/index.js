@@ -77,4 +77,18 @@
 	}
 })();
 
+$(document).ready(function(){
+	$("button").click(function(){
+		data = {
+			"language" : $('#language').val(),
+			"code": $('#code').val().trim()
+		}
+		console.log("Data : ",data)
+		$.post("http://localhost:8090/execute",JSON.stringify(data),
+		function(output,status){
+			console.log(output)
+		})
+	})
+})
+
 MicroCode.init('.code-input', '.code-output', '.language');
