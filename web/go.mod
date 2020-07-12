@@ -15,7 +15,8 @@ require (
 	github.com/moby/term v0.0.0-20200611042045-63b9a826fb74 // indirect
 	github.com/morikuni/aec v1.0.0 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
-	github.com/opencontainers/image-spec v1.0.1
+	github.com/opencontainers/image-spec v1.0.1 // indirect
+	github.com/rakyll/statik v0.1.7
 	github.com/sirupsen/logrus v1.6.0 // indirect
 	golang.org/x/time v0.0.0-20200416051211-89c76fbcd5d1 // indirect
 	google.golang.org/grpc v1.30.0 // indirect

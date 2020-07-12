@@ -9,12 +9,12 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
-
+	"github.com/rakyll/statik/fs"
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/client"
 	"github.com/gorilla/mux"
+	_ "github.com/itsjwala/locus/web/statik"
 )
 
 type input struct {
@@ -25,13 +25,14 @@ type input struct {
 func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/execute", execCode).Methods("POST")
-	//router.HandleFunc("/", load).Methods("GET")
-	// fs := http.FileServer(http.Dir("./frontend"))
-	// http.Handle("/", fs)
 
-	router.PathPrefix("").Handler(http.StripPrefix("/", http.FileServer(http.Dir("./frontend"))))
+	statikFS, err := fs.New()
+	if err != nil {
+	log.Fatal(err)
+	}
+	router.PathPrefix("").Handler(http.StripPrefix("/", http.FileServer(statikFS)))
 
-	if err := http.ListenAndServe(":8090", router); err != nil {
+	if err := http.ListenAndServe(":8000", router); err != nil {
 		log.Fatal("Error while listening to the specified port. Reason:", err)
 	}
 }
@@ -74,7 +75,6 @@ func execCode(w http.ResponseWriter, r *http.Request) {
 	buf := new(bytes.Buffer)
 	buf.ReadFrom(out)
 
-	io.Copy(os.Stdout, out)
 	w.WriteHeader(http.StatusOK)
 	io.WriteString(w, buf.String())
 }
