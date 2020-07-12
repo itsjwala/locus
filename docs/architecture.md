@@ -56,6 +56,14 @@ a) Build Locus runner itself in golang container
 
 b) loops to all language directory and build language images embedding the locus runner binary and making it as entrypoint
 
+we can test with docker CLI if the image build works
+
+```sh
+➜ docker run --rm itsjwala/locus_runner-python '{"language": "python", "code": "print(\"hello world\")"}'
+{"stdout":"hello world\n","stderr":"","error":""}
+```
+
+
 #### Web Server 
 
 Simple Golang [HTTP server](https://github.com/itsjwala/locus/blob/master/web/server.go) which based on incoming request creates the container.
