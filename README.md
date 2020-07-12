@@ -1,24 +1,64 @@
 <div align=center>
-<img style="width:50%" src="./docs/images/logo.png">
+<img src="./docs/images/logo.png">
 <p> Run languages in docker sandbox</p>
 </div>
 
 ---
 
-### Getting started
+## Technologies 
+
+1. Golang for [Locus Runner](https://github.com/itsjwala/locus/tree/master/runner)
+
+2. Golang for [Web](https://github.com/itsjwala/locus/tree/master/web)
+
+3. Vanila HTML, CSS, JS(& JQuery) for [frontend](https://github.com/itsjwala/locus/tree/master/web/frontend) 
+
+4. Docker for Infrastructure
+
+## Getting started
 
 Checkout [docs](https://itsjwala.github.io/locus) for complete details
 
-### Contributing
+
+## Usage
+
+
+### Prerequisite
+
+1. Install [Docker](https://docs.docker.com/engine/install/) ( thats it :smile: )
+
+### Installation and Setup
+
+1. start locus 
+
+```sh
+make run 
+```
+
+2. To Stop the web container send SIGTERM `ctrl ^ c`
+
+
+3. clear the images that were created 
+
+```sh
+make clear
+```
+
+## Contributing
 
 If you'd like to contribute, please fork the repository and use a feature
 branch. Pull requests are warmly welcome. 
 
-### Authors
+
+## Issues
+
+Github [Issue](https://github.com/itsjwala/locus/issues) tracker
+
+## Authors
 
 * [@Jigar](https://github.com/itsjwala)
 * [@Bhavna](https://github.com/bhavnavarshney)
 
-### Licensing
+## Licensing
 
-MIT
+[WTFPL](http://www.wtfpl.net/)
