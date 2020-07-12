@@ -23,7 +23,7 @@
 	src: local('PT Mono'), local('PTMono-Regular'), url(https://fonts.gstatic.com/s/ptmono/v7/9oRONYoBnWILk-9AnC8zNg.ttf) format('truetype');
 }
 body {
-	background:#757de8;
+	background:#7b1fa2;
 	font-family: Lato, sans-serif;
 	font-size: 15px;
 	margin: 0;
@@ -50,7 +50,7 @@ main {
 .title {
 	color: #fff;
 	text-align: left;
-	font-weight: 300;
+	font-weight: 500;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.2);
 	font-size: 2.8em;
 	margin-top: 0.5em;
@@ -162,10 +162,32 @@ main {
 }
 .code-output {
 	margin: 2%;
+	margin-left: 30px;
+	left: 30px;
 	position:absolute;
 	color: ghostwhite;
 	font-size: 0.8rem;
 	font-family: 'PT Mono', monospace;
+}
+.button {
+  background-color: #fce4ec;
+  border: none;
+  color:#8e24aa;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border-radius: 25px;
+  width: 150px;
+  font-weight: 500;
+}
+.button:hover {
+	background-color: #ae52d4;
+	color:ghostwhite;
+	border: 2px solid #4a0072;
 }
 a.token {
 	text-decoration: none;
@@ -188,6 +210,6 @@ a.token {
 .token.comment {
 	color: DarkGrey;
 }
-.language-php .variable {
+.language-php .variable .code-output{
 	color: CadetBlue;
 }

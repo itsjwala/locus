@@ -83,7 +83,7 @@ $(document).ready(function(){
 			"language" : $('#language').val(),
 			"code": $('#code').val().trim()
 		}
-		console.log("Data : ",data)
+		$('#output').text('Executing..')
 		$.post("http://localhost:8090/execute",JSON.stringify(data),
 		function(output,status){
 			console.log(output)
