@@ -62,3 +62,12 @@ Github [Issue](https://github.com/itsjwala/locus/issues) tracker
 ## Licensing
 
 [WTFPL](http://www.wtfpl.net/)
+
+
+---
+
+1. docker container remove after run
+
+2. beautify UI
+
+3. cleanup server.go code
