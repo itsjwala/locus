@@ -11,7 +11,7 @@
 
 2. Golang for [Web](https://github.com/itsjwala/locus/tree/master/web)
 
-3. Vanila HTML, CSS, JS(& JQuery) for [frontend](https://github.com/itsjwala/locus/tree/master/frontend) 
+3. Vanila HTML, CSS, JS(& JQuery) for [frontend](https://github.com/itsjwala/locus/tree/master/web/frontend) 
 
 4. Docker for Infrastructure
 
@@ -43,8 +43,6 @@ make run
 ```sh
 make clear
 ```
-
-> Learn how [Makefile] works
 
 ## Contributing
 
