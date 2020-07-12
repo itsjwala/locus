@@ -10,6 +10,31 @@ The likes of *Hackerrank*, *Hackerearth*, *LeetCode*, *CodeChef* e.t.c uses [uni
 ![screenshot]()
 
 
+### Usage
+
+
+#### Prerequisite
+
+1. Install [Docker](https://docs.docker.com/engine/install/) ( thats it :smile: )
+
+#### Installation and Setup
+
+1. start locus 
+
+```sh
+make run 
+```
+
+2. To Stop the web container send SIGTERM `ctrl ^ c`
+
+
+3. clear the images that were created 
+
+```sh
+make clear
+```
+
+
 ### Supported Language
 
 1. Python
@@ -20,9 +45,8 @@ The likes of *Hackerrank*, *Hackerearth*, *LeetCode*, *CodeChef* e.t.c uses [uni
 ### TechStack
 
 
-![docker]()
+<i class="devicon-docker-plain-wordmark"></i>
 
-![golang]()
+<i class="devicon-go-line colored"></i>
 
-![]()
 
