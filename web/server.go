@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 
@@ -24,8 +25,15 @@ type input struct {
 func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/execute", execCode).Methods("POST")
-	fmt.Println("done")
-	http.ListenAndServe(":8090", router)
+	//router.HandleFunc("/", load).Methods("GET")
+	// fs := http.FileServer(http.Dir("./frontend"))
+	// http.Handle("/", fs)
+
+	router.PathPrefix("").Handler(http.StripPrefix("/", http.FileServer(http.Dir("./frontend"))))
+
+	if err := http.ListenAndServe(":8090", router); err != nil {
+		log.Fatal("Error while listening to the specified port. Reason:", err)
+	}
 }
 
 func execCode(w http.ResponseWriter, r *http.Request) {
