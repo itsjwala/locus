@@ -87,6 +87,11 @@ $(document).ready(function(){
 		$.post("http://localhost:8090/execute",JSON.stringify(data),
 		function(output,status){
 			console.log(output)
+			if (output.stderr == ''){
+				$("#output").text(output.stdout)
+			} else{
+				$("#output").text(output.stderr)
+			}		
 		})
 	})
 })
