@@ -12,6 +12,7 @@ import (
 	"github.com/rakyll/statik/fs"
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
+	"github.com/docker/docker/api/types/filters"
 	"github.com/docker/docker/client"
 	"github.com/gorilla/mux"
 	_ "github.com/itsjwala/locus/web/statik"
@@ -55,6 +56,8 @@ func execCode(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
+	go containerCleanupDaemon(cli,ctx)
+
 	resp, err := cli.ContainerCreate(ctx, &container.Config{
 		Image: fmt.Sprintf("itsjwala/locus_runner-%s", in.Language),
 		Cmd:   []string{string(b)},
@@ -77,4 +80,25 @@ func execCode(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusOK)
 	io.WriteString(w, buf.String())
+}
+
+func containerCleanupDaemon(cli *client.Client,ctx context.Context){
+	
+	filter := filters.NewArgs()
+	filter.Add("type", "container")
+	filter.Add("event", "die")
+
+	msg,errChan := cli.Events(ctx,types.EventsOptions{
+		Filters: filter,
+	})
+	
+	for {
+		select {
+		case err := <-errChan:
+			panic(err)
+		case message := <-msg:
+			cli.ContainerRemove(ctx,message.ID, types.ContainerRemoveOptions{Force : true,})
+		}
+	}
+
 }
