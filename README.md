@@ -66,8 +66,8 @@ Github [Issue](https://github.com/itsjwala/locus/issues) tracker
 
 ---
 
-1. docker container remove after run
+1. beautify UI
 
-2. beautify UI
+2. draft linkedin post
 
-3. cleanup server.go code
+3. screenshot in readme
