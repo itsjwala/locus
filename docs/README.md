@@ -42,7 +42,7 @@ make clear
 1. Python
 2. NodeJS
 
-> Add more Language following this [guide]()
+> Add more Language following this [guide](extension.md)
 
 ### TechStack
 
