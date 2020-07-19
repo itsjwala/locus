@@ -62,12 +62,3 @@ Github [Issue](https://github.com/itsjwala/locus/issues) tracker
 ## Licensing
 
 [WTFPL](http://www.wtfpl.net/)
-
-
----
-
-1. beautify UI
-
-2. draft linkedin post
-
-3. screenshot in readme
