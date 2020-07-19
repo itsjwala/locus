@@ -9,6 +9,7 @@ The likes of *Hackerrank*, *Hackerearth*, *LeetCode*, *CodeChef* e.t.c uses [uni
 <p align="center">
 <img alt="screenshot" src="images/screenshot.png">
 </p>
+
 ---
 
 ### Usage
@@ -46,8 +47,8 @@ make clear
 ### TechStack
 
 ---
-
 <div align="center">
+<div>
 <img style="display: inline-block" width="7%" src="https://cdn.svgporn.com/logos/html-5.svg">
 <img style="display: inline-block" width="7%" src="https://cdn.svgporn.com/logos/css-3.svg">
 <img style="display: inline-block" width="10%" src="https://cdn.svgporn.com/logos/javascript.svg">
@@ -59,3 +60,4 @@ make clear
 </div>
 
 <img style="display: inline-block" width="30%" src="https://cdn.svgporn.com/logos/docker.svg">
+</div>
