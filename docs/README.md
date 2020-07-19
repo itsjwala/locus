@@ -6,9 +6,7 @@
 
 The likes of *Hackerrank*, *Hackerearth*, *LeetCode*, *CodeChef* e.t.c uses [unix namespace](https://en.wikipedia.org/wiki/Linux_namespaces) isolation so they can run your submitted code and output it to you without damaging their infra with malicious code. This Project Demonstrates similar attempt of making such namespace isolation using Docker other being [LXC](https://en.wikipedia.org/wiki/Linux_namespaces#Adoption)
 
-
-![screenshot]()
-
+<img alt="screenshot" src="images/screenshot.png" style="box-shadow: grey;">
 
 ---
 
@@ -60,7 +58,3 @@ make clear
 </div>
 
 <img style="display: inline-block" width="30%" src="https://cdn.svgporn.com/logos/docker.svg">
-
-
-
-

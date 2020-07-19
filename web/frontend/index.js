@@ -88,7 +88,7 @@ $(document).ready(function(){
 		function(output,status){
 			console.log(output)
 			if (output.stderr == ''){
-				$("#output").text(output.stdout)
+				$("#output").html(output.stdout.trim().split("\n").join("<br/>"))
 			} else{
 				$("#output").text(output.stderr)
 			}		
