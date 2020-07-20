@@ -11,3 +11,20 @@
 
 
 4. [Golang learning resource](https://www.callicoder.com/categories/golang/)
+
+5. my docker [daemon config](https://docs.docker.com/config/daemon/#configure-the-docker-daemon) file for reference
+
+```json
+{
+  "debug": true,
+  "experimental": false,
+  "log-driver": "local",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3"
+  },
+  "features": {
+    "buildkit": true
+  }
+}
+```
