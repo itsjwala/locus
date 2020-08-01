@@ -5,6 +5,8 @@
 
 2. [Docker best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
+3. [The Docker Handbook](https://www.freecodecamp.org/news/the-docker-handbook/)
+
 3. Docker tips and tricks from Docker Captain 👌
 
 [![Watch the video](https://img.youtube.com/vi/woBI466WMR8/maxresdefault.jpg)](https://www.youtube.com/watch?v=woBI466WMR8)
